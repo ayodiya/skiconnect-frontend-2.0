@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
   },
   form: {
     [theme.breakpoints.up('lg')]: {
-      paddingTop: '200px',
+      paddingTop: '100px',
       paddingRight: '150px'
     }
   },
