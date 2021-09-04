@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '35px',
     fontWeight: 'bold',
     fontStyle: 'italic',
-    paddingTop: '250px',
+    paddingTop: '150px',
     paddingBottom: '10px',
     justifyContent: 'center',
     display: 'flex',
