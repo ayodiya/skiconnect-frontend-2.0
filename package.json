@@ -39,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/ayodiya/skiconnect-frontend-2.0.git",
+  "author": "ayodiya <devayodiya@gmail.com>",
+  "license": "MIT"
 }
