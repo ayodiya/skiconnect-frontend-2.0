@@ -1,10 +1,9 @@
-import Box from '@material-ui/core/Box'
-import Paper from '@material-ui/core/Paper'
-import Hidden from '@material-ui/core/Hidden'
-import Divider from '@material-ui/core/Divider'
+import Box from '@mui/material/Box'
+import Paper from '@mui/material/Paper'
+import Hidden from '@mui/material/Hidden'
+import Divider from '@mui/material/Divider'
 import ButtonBase from '../components/buttons/buttonBase'
-import CircularProgress from '@material-ui/core/CircularProgress'
-import { makeStyles } from '@material-ui/core/styles'
+import CircularProgress from '@mui/material/CircularProgress'
 import { Link } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 
@@ -18,117 +17,44 @@ import loginFormValidator, {
   PASSWORD_LABEL
 } from '../validator/loginFormValidator'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    backgroundColor: '#28EBFF',
-    minHeight: '100vh',
-    width: '100%',
-    color: 'white'
-  },
-  pageBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    [theme.breakpoints.up('md')]: {
-      flexDirection: 'row',
-      justifyContent: 'space-around'
-    }
-  },
-  headerText: {
-    color: '#002E9F',
-    fontSize: '35px',
-    fontWeight: 'bold',
-    fontStyle: 'italic',
-    paddingTop: '100px',
-    paddingBottom: '10px',
-    justifyContent: 'center',
-    display: 'flex',
-    [theme.breakpoints.up('lg')]: {
-      fontSize: '70px'
-    },
-    [theme.breakpoints.up('md')]: {
-      paddingTop: '150px',
-      fontSize: '50px'
-    }
-  },
-  paper: {
-    width: '300px',
-    minHeight: '400px',
-    borderRadius: '20px',
-    [theme.breakpoints.up('md')]: {
-      width: '450px'
-    }
-  },
-  loginButton: {
-    fontSize: '15px',
-    width: '280px',
-    height: '50px',
-    borderRadius: '10px',
-    textTransform: 'none',
-    [theme.breakpoints.up('md')]: {
-      width: '400px'
-    }
-  },
-  createButton: {
-    fontSize: '15px',
-    width: '150px',
-    height: '50px',
-    borderRadius: '10px',
-    textTransform: 'none',
-    background: '#8dc133',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#8dc133'
-    }
-  },
-  link: {
-    textTransform: 'none',
-    textDecoration: 'none',
-    paddingTop: '15px',
-    paddingBottom: '15px',
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '15px',
-    flexDirection: 'column'
-  },
-  alignCenter: {
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-      alignItems: 'center'
-    }
-  },
-  form: {
-    [theme.breakpoints.up('lg')]: {
-      paddingTop: '100px',
-      paddingRight: '150px'
-    }
-  },
-  textFieldStyle: {
-    borderRadius: '10px',
-    width: '280px',
-    [theme.breakpoints.up('md')]: {
-      width: '400px'
-    }
-  }
-}))
-
 const initialValues = {
   [EMAIL]: '',
   [PASSWORD]: ''
 }
 
 const Home = () => {
-  const classes = useStyles()
-
   return (
     <>
       <AuthPage>
-        <Box className={classes.form}>
+        <Box
+          sx={{ paddingTop: { lg: '100px' }, paddingRight: { lg: '150px' } }}
+        >
           <Box display='flex' justifyContent='center' flexDirection='column'>
             <Hidden lgUp>
-              <Box className={classes.headerText}>SKICONNECT</Box>
+              <Box
+                sx={{
+                  color: '#002E9F',
+                  fontSize: { xs: '35px', md: '50px', lg: '70px' },
+                  fontWeight: 'bold',
+                  fontStyle: 'italic',
+                  paddingTop: { xs: '100px', md: '150px' },
+                  paddingBottom: '10px',
+                  justifyContent: 'center',
+                  display: 'flex'
+                }}
+              >
+                SKICONNECT
+              </Box>
             </Hidden>
             <Box display='flex' justifyContent='center'>
-              <Paper elevation={2} className={classes.paper}>
+              <Paper
+                elevation={2}
+                sx={{
+                  width: { xs: '300px', md: '450px' },
+                  minHeight: '400px',
+                  borderRadius: '20px'
+                }}
+              >
                 <Box display='flex' justifyContent='center'>
                   <Formik
                     initialValues={initialValues}
@@ -154,8 +80,9 @@ const Home = () => {
                               touched[EMAIL] && errors[EMAIL] !== undefined
                             }
                             onChange={handleChange}
-                            InputProps={{
-                              className: classes.textFieldStyle
+                            sx={{
+                              borderRadius: '10px',
+                              width: { xs: '280px', md: '400px' }
                             }}
                             variant='outlined'
                             value={values[EMAIL]}
@@ -175,8 +102,9 @@ const Home = () => {
                               errors[PASSWORD] !== undefined
                             }
                             onChange={handleChange}
-                            InputProps={{
-                              className: classes.textFieldStyle
+                            sx={{
+                              borderRadius: '10px',
+                              width: { xs: '280px', md: '400px' }
                             }}
                             variant='outlined'
                             value={values[PASSWORD]}
@@ -187,23 +115,36 @@ const Home = () => {
                         </Box>
                         <Box fontWeight='bold' pt='20px'>
                           <ButtonBase
-                            className={classes.loginButton}
+                            sx={{
+                              fontSize: '15px',
+                              width: { xs: '280px', md: '400px' },
+                              height: '50px',
+                              borderRadius: '10px',
+                              textTransform: 'none'
+                            }}
                             disabled={isSubmitting}
                             color='primary'
                             text={
-                              isSubmitting ? (
-                                <CircularProgress
-                                  className={classes.colorWhite}
-                                />
-                              ) : (
-                                'Log In'
-                              )
+                              isSubmitting ? <CircularProgress /> : 'Log In'
                             }
                             variant='contained'
                             type='submit'
                           />
                         </Box>
-                        <Box className={classes.link} component={Link} to='!#'>
+                        <Box
+                          sx={{
+                            textTransform: 'none',
+                            textDecoration: 'none',
+                            paddingTop: '15px',
+                            paddingBottom: '15px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontSize: '15px',
+                            flexDirection: 'column'
+                          }}
+                          component={Link}
+                          to='!#'
+                        >
                           Forgot Password?
                         </Box>
                       </Form>
@@ -218,7 +159,18 @@ const Home = () => {
                   pt='15px'
                 >
                   <ButtonBase
-                    className={classes.createButton}
+                    sx={{
+                      fontSize: '15px',
+                      width: '150px',
+                      height: '50px',
+                      borderRadius: '10px',
+                      textTransform: 'none',
+                      background: '#8dc133',
+                      color: 'white',
+                      '&:hover': {
+                        backgroundColor: '#8dc133'
+                      }
+                    }}
                     text='Create Account'
                     variant='contained'
                     type='submit'

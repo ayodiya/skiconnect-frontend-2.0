@@ -1,21 +1,11 @@
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Box from '@material-ui/core/Box'
-import Hidden from '@material-ui/core/Hidden'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import Box from '@mui/material/Box'
+import Hidden from '@mui/material/Hidden'
 import { useLocation } from 'react-router'
-import { makeStyles } from '@material-ui/core/styles'
 
 import MobileNavbar from './MobileNavbar'
 import DesktopNavbar from './DesktopNavbar'
-
-const useStyles = makeStyles(theme => ({
-  toolbar: {
-    [theme.breakpoints.up('md')]: {
-      paddingLeft: '150px',
-      paddingRight: '150px'
-    }
-  }
-}))
 
 const navLinks = [
   { url: '!#', text: 'Login' },
@@ -23,7 +13,6 @@ const navLinks = [
 ]
 
 const Navbar = () => {
-  const classes = useStyles()
   const { pathname } = useLocation()
 
   return (
@@ -31,7 +20,16 @@ const Navbar = () => {
       <Hidden xlDown={pathname === '/'}>
         <Box>
           <AppBar color='secondary' position='fixed' elevation={0}>
-            <Toolbar className={classes.toolbar}>
+            <Toolbar
+              sx={{
+                toolbar: {
+                  md: {
+                    paddingLeft: '150px',
+                    paddingRight: '150px'
+                  }
+                }
+              }}
+            >
               <DesktopNavbar navLinks={navLinks} />
               <MobileNavbar navLinks={navLinks} />
             </Toolbar>
