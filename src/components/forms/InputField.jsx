@@ -1,5 +1,5 @@
 import React from 'react'
-import FormControl from '@material-ui/core/FormControl'
+import FormControl from '@mui/material/FormControl'
 import TextField from '@mui/material/TextField'
 
 const InputField = ({ name, onChange, label, ...props }) => {
