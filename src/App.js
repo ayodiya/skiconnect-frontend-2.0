@@ -1,8 +1,8 @@
+import CssBaseline from '@mui/material/CssBaseline'
 import { Suspense } from 'react'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { theme } from './utils/theme'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@mui/material/styles'
 
 import Routes from './routes'
 import Loading from './components/Loading'

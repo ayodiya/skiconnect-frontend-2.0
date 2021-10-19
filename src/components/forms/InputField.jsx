@@ -1,27 +1,15 @@
 import React from 'react'
 import FormControl from '@material-ui/core/FormControl'
-import TextField from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles'
-
-const useStyles = makeStyles({
-  textFieldStyle: {
-    borderRadius: '10px',
-    width: '280px'
-  }
-})
+import TextField from '@mui/material/TextField'
 
 const InputField = ({ name, onChange, label, ...props }) => {
-  const classes = useStyles()
-
   return (
     <FormControl>
       <TextField
+        sx={{ className: { borderRadius: '50px', width: '280px' } }}
         name={name}
         label={label}
         onChange={onChange}
-        InputProps={{
-          className: classes.textFieldStyle
-        }}
         {...props}
       />
     </FormControl>

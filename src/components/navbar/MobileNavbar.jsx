@@ -1,44 +1,14 @@
-import Box from '@material-ui/core/Box'
-import IconButton from '@material-ui/core/IconButton'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import Typography from '@material-ui/core/Typography'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import { makeStyles } from '@material-ui/core/styles'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
+import SwipeableDrawer from '@mui/material/SwipeableDrawer'
+import Typography from '@mui/material/Typography'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState } from 'react'
 
-const useStyles = makeStyles(theme => ({
-  menuIcon: {
-    color: 'white',
-    fontSize: '35px'
-  },
-  list: {
-    width: 250,
-    display: 'flex',
-    justifyContent: 'center'
-  },
-  nav: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    flexGrow: 1,
-    [theme.breakpoints.up('md')]: {
-      display: 'none'
-    }
-  },
-  logo: {
-    fontSize: '35px',
-    fontWeight: 'bold',
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100%'
-  }
-}))
-
 const MobileNavbar = ({ navLinks }) => {
-  const classes = useStyles()
   const [openDrawer, setOpenDrawer] = useState(false)
 
   const openSideNavbar = () => setOpenDrawer(true)
@@ -48,7 +18,10 @@ const MobileNavbar = ({ navLinks }) => {
   }
 
   const NavLinks = () => (
-    <Box className={classes.list} onClick={closeSideNavbar}>
+    <Box
+      sx={{ width: 250, display: 'flex', justifyContent: 'center' }}
+      onClick={closeSideNavbar}
+    >
       <List>
         {navLinks.map(({ text }) => (
           <ListItem button key={text}>
@@ -63,9 +36,19 @@ const MobileNavbar = ({ navLinks }) => {
 
   return (
     <>
-      <Box className={classes.nav}>
+      <Box
+        sx={{
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          flexGrow: 1,
+          display: { sm: 'flex', md: 'none' }
+        }}
+      >
         <Box>
-          <IconButton className={classes.menuIcon} onClick={openSideNavbar}>
+          <IconButton
+            sx={{ color: 'white', fontSize: '35px' }}
+            onClick={openSideNavbar}
+          >
             <GiHamburgerMenu />
           </IconButton>
           <SwipeableDrawer
@@ -77,7 +60,17 @@ const MobileNavbar = ({ navLinks }) => {
             <NavLinks />
           </SwipeableDrawer>
         </Box>
-        <Box className={classes.logo}>SKICONNECT</Box>
+        <Box
+          sx={{
+            fontSize: '35px',
+            fontWeight: 'bold',
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%'
+          }}
+        >
+          SKICONNECT
+        </Box>
       </Box>
     </>
   )
