@@ -6,6 +6,8 @@ import { useLocation } from 'react-router'
 
 import MobileNavbar from './MobileNavbar'
 import DesktopNavbar from './DesktopNavbar'
+import { hideOnPath } from '../../utils/hideOnPath'
+import { LANDING_ROUTE, REGISTER_ROUTE } from '../../utils/routes'
 
 const navLinks = [
   { url: '!#', text: 'Login' },
@@ -17,7 +19,7 @@ const Navbar = () => {
 
   return (
     <>
-      <Hidden xlDown={pathname === '/'}>
+      <Hidden xlDown={hideOnPath(pathname, LANDING_ROUTE, REGISTER_ROUTE)}>
         <Box>
           <AppBar color='secondary' position='fixed' elevation={0}>
             <Toolbar

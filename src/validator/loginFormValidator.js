@@ -14,5 +14,4 @@ export default Yup.object({
   [PASSWORD]: Yup.string()
     .label(PASSWORD_LABEL)
     .required()
-    .min(8)
 })
