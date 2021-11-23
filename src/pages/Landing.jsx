@@ -16,13 +16,14 @@ import loginFormValidator, {
   PASSWORD,
   PASSWORD_LABEL
 } from '../validator/loginFormValidator'
+import { REGISTER_ROUTE } from '../utils/routes'
 
 const initialValues = {
   [EMAIL]: '',
   [PASSWORD]: ''
 }
 
-const Home = () => {
+const Landing = () => {
   return (
     <>
       <AuthPage>
@@ -43,14 +44,14 @@ const Home = () => {
                   display: 'flex'
                 }}
               >
-                SKICONNECT
+                LOGIN
               </Box>
             </Hidden>
             <Box display='flex' justifyContent='center'>
               <Paper
                 elevation={2}
                 sx={{
-                  width: { xs: '300px', md: '450px' },
+                  width: { xs: '350px', md: '450px' },
                   minHeight: '400px',
                   borderRadius: '20px'
                 }}
@@ -70,7 +71,7 @@ const Home = () => {
                       handleBlur
                     }) => (
                       <Form onSubmit={handleSubmit}>
-                        <Box pt='20px'>
+                        <Box pt='50px'>
                           <InputField
                             name={EMAIL}
                             type='text'
@@ -171,6 +172,8 @@ const Home = () => {
                         backgroundColor: '#8dc133'
                       }
                     }}
+                    component={Link}
+                    to={REGISTER_ROUTE}
                     text='Create Account'
                     variant='contained'
                     type='submit'
@@ -184,4 +187,4 @@ const Home = () => {
     </>
   )
 }
-export default Home
+export default Landing
